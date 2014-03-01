@@ -1,4 +1,4 @@
-;;; instaparse-mode.el --- Highlight mode for Extended Backus-Naur Form
+;;; instaparse-mode.el --- Highlight mode for instaparse grammars in EBNF
 
 ;; Copyright (C) 2014 Florian Bauer
 ;; Based on ebnf-mode by Jeramey Crawford (http://github.com/jeramey/instaparse-mode)
@@ -20,22 +20,30 @@
 
 ;;; Commentary:
 
-;; This major mode provides basic syntax highlighting for Extended
-;; Backus-Naur Form metasyntax texts. For more information on what
-;; EBNF is, consult Wikipedia:
+;; This major mode provides basic syntax highlighting for instaparse
+;; grammars that use Extended Backus-Naur Form (EBNF) metasyntax. See
+;; <https://github.com/Engelberg/instaparse>
+
+;; For more information on what EBNF is, consult Wikipedia:
 ;; <http://en.wikipedia.org/wiki/Extended_Backus-Naur_Form>
 
 ;;; Code:
 
 ;;;###autoload
 (define-generic-mode 'instaparse-mode
+  ;; comments
   '(("(*" . "*)"))
-  '() ; no keywords
-  '(("^\s*\\([a-zA-Z][a-zA-Z-0-9]+\\)\s*=" 1 font-lock-variable-name-face)
+  ;; use keyword for operators
+  '("::=" ":=" "=" ":" ; rule definition
+    "|" "?" "+" "*" "!"
+    "Epsilon" "epsilon" "EPSILON" "eps" "ε" "\"\"" "''")
+  '(
+    (
+     "^\s*\\([a-zA-Z][a-zA-Z-0-9]+\\)\s*\\(=\\|:\\)" 1 font-lock-variable-name-face)
     ("['\"].*?['\"]" . font-lock-string-face)
-    ("\\?.*\\?" . font-lock-negation-char-face)
-    ("[()<>\\[\\]]" . font-lock-type-face)
-    ("[a-zA-Z][a-zA-Z-0-9]+" . font-lock-function-name-face))
+    ;;("[()<>\\[\\]]" . font-lock-type-face)
+    ;("[a-zA-Z][a-zA-Z-0-9]+" . font-lock-function-name-face)
+    )
   '("\\.ebnf\\'")
   `(,(lambda () (setq mode-name "instaparse")))
   "Major mode for instaparses EBNF metasyntax text highlighting.")
