@@ -6,7 +6,7 @@
 
 (package-initialize)
 
-(defvar my-packages '( starter-kit starter-kit-lisp
+(defvar my-packages '(starter-kit starter-kit-lisp
                       starter-kit-bindings starter-kit-eshell
                       clojure-mode clojure-test-mode cider
                       rainbow-delimiters zenburn-theme))
@@ -43,7 +43,7 @@
  '(js2-mode-indent-ignore-first-tab t)
  '(menu-bar-mode t)
  '(python-remove-cwd-from-path nil)
- '(safe-local-variable-values (quote ((pytest . ".env/bin/py.test") (pytest . \.env/bin/py\.test) (pytest ".env/bin/py.test") (pytest ".env/bin/pytest")))))
+)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -51,12 +51,23 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; globally disallow tabs in indentation
 (setq-default indent-tabs-mode nil)
 
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
 (load-theme 'zenburn t)
 
 ;; get rid of special rendered fn symbol in clojure mode
 (remove-hook 'clojure-mode-hook 'esk-pretty-fn)
+
+;; global key bindings for org mode
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+;; store elisp that is not yet handled by the package system here
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
