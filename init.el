@@ -71,3 +71,6 @@
 
 ;; store elisp that is not yet handled by the package system here
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
+
+;; my own instaparse mode
+(require 'instaparse-mode)
