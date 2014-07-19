@@ -6,10 +6,22 @@
 
 (package-initialize)
 
-(defvar my-packages '(starter-kit starter-kit-lisp
-                      starter-kit-bindings starter-kit-eshell
-                      clojure-mode clojure-test-mode cider
-                      rainbow-delimiters zenburn-theme))
+(defvar my-packages '(starter-kit
+                      starter-kit-lisp
+                      starter-kit-bindings
+                      starter-kit-eshell
+                      elisp-slime-nav
+                      paredit
+                      idle-highlight-mode
+                      find-file-in-project
+                      smex
+                      ido-ubiquitous
+                      magit
+                      clojure-mode
+                      clojure-test-mode
+                      cider
+                      rainbow-delimiters
+                      zenburn-theme))
 
 
 (defun my-packages-installed-p ()
