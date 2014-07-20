@@ -1,7 +1,7 @@
 (require 'package)
 (require 'cl)
-(setq package-archives '( ("marmalade" . "http://marmalade-repo.org/packages/") 
-			  ("gnu" . "http://elpa.gnu.org/packages/")))
+(setq package-archives '( ("marmalade" . "http://marmalade-repo.org/packages/")
+                          ("gnu" . "http://elpa.gnu.org/packages/")))
 
 
 (package-initialize)
@@ -28,7 +28,7 @@
   (loop for p in my-packages
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
- 
+
 (unless (my-packages-installed-p)
   ;; check for new packages (package versions)
   (package-refresh-contents)
@@ -55,6 +55,8 @@
  '(js2-mode-indent-ignore-first-tab t)
  '(menu-bar-mode t)
  '(org-agenda-files (quote ("~/orgmode/logins.org.gpg")))
+ '(org-default-notes-file (concat org-directory "/notes"))
+ '(org-directory "~/orgmode")
  '(python-remove-cwd-from-path nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
