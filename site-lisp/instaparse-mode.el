@@ -45,8 +45,14 @@
     ;("[a-zA-Z][a-zA-Z-0-9]+" . font-lock-function-name-face)
     )
   '("\\.ebnf\\'")
-  `(,(lambda () (setq mode-name "instaparse")))
+  `(,(lambda ()
+       (setq mode-name "instaparse")
+       (set (make-local-variable 'indent-line-function)
+            'instaparse-indent-line)))
   "Major mode for instaparses EBNF metasyntax text highlighting.")
 
+(defun instaparse-indent-line ()
+  (interactive)
+  (indent-line-to 34))
 (provide 'instaparse-mode)
 ;;; instaparse-mode.el ends here
