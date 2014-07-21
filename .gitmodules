@@ -1,0 +1,3 @@
+[submodule "site-lisp/instaparse-mode"]
+	path = site-lisp/instaparse-mode
+	url = https://github.com/fbauer/instaparse-mode
