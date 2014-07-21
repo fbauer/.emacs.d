@@ -91,6 +91,3 @@
 
 ;; my own instaparse mode
 (require 'instaparse-mode)
-;; work-around for dead key problem
-;; see http://www.emacswiki.org/emacs/DeadKeys
-(require 'iso-transl)
