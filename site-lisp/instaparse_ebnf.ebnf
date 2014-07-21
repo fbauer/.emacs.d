@@ -11,7 +11,7 @@ user> (insta/parser cfg/cfg :start :rules)
 <rules> = <opt-whitespace> rule+
 alt = cat (<opt-whitespace> <"|"> <opt-whitespace> cat)*
 hide = <"<"> <opt-whitespace> alt-or-ord <opt-whitespace> <">">
-nt = !epsilon #"[^, \r\t\n<>(){}\[\]+*?:=|'"#&!;./]+(?x) #Non-terminal"
+nt = !epsilon #"[^, \r\t\n<>(){}\[\]+*?:=|'\"#&!;./]+(?x) #Non-terminal"
 string = #"'[^'\\]*(?:\\.[^'\\]*)*'(?x) #Single-quoted string" | #"\"[^\"\\]*(?:\\.[^\"\\]*)*\"(?x) #Double-quoted string"
 neg = <"!"> <opt-whitespace> factor
 comment = "(*" inside-comment "*)"
