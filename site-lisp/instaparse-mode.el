@@ -36,10 +36,10 @@
   ;; use keyword for operators
   '("::=" ":=" "=" ":" ; rule definition
     "|" "?" "+" "*" "!"
-    "Epsilon" "epsilon" "EPSILON" "eps" "ε" "\"\"" "''")
+    "Epsilon" "epsilon" "EPSILON" "eps" "ε")
   '(
     (
-     "^\s*\\([a-zA-Z][a-zA-Z-0-9]+\\)\s*\\(=\\|:\\)" 1 font-lock-variable-name-face)
+     "^\s*\<?\s*\\([a-zA-Z][a-zA-Z-0-9]+\\)\s*\>?\s*\\(=\\|:\\)" 1 font-lock-variable-name-face)
     ("['\"].*?['\"]" . font-lock-string-face)
     ;;("[()<>\\[\\]]" . font-lock-type-face)
     ;("[a-zA-Z][a-zA-Z-0-9]+" . font-lock-function-name-face)
