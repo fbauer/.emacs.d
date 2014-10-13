@@ -91,3 +91,4 @@
 
 ;; my own instaparse mode
 (require 'instaparse-mode)
+(put 'downcase-region 'disabled nil)
