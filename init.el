@@ -1,8 +1,8 @@
 (defconst emacs-start-time (current-time))
 (require 'package)
 (require 'cl)
-(setq package-archives '( ("marmalade" . "http://marmalade-repo.org/packages/")
-                          ("gnu" . "http://elpa.gnu.org/packages/")))
+(setq package-archives '(("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (let ((default-directory "~/.emacs.d/site-lisp/"))
   (normal-top-level-add-to-load-path '("."))
@@ -54,10 +54,6 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes (quote ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "be7eadb2971d1057396c20e2eebaa08ec4bfd1efe9382c12917c6fe24352b7c1" default)))
  '(imenu-auto-rescan t t)
- '(js2-auto-indent-p nil)
- '(js2-bounce-indent-p t)
- '(js2-cleanup-whitespace t)
- '(js2-mode-indent-ignore-first-tab t)
  '(menu-bar-mode t)
  '(org-agenda-files (quote ("~/orgmode/logins.org.gpg")))
  '(org-default-notes-file (concat org-directory "/notes"))
@@ -73,8 +69,6 @@
 ;; globally disallow tabs in indentation
 (setq-default indent-tabs-mode nil)
 
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (load-theme 'zenburn t)
