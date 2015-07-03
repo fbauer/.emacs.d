@@ -47,11 +47,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(browse-url-generic-program "firefox")
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes (quote ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "be7eadb2971d1057396c20e2eebaa08ec4bfd1efe9382c12917c6fe24352b7c1" default)))
- '(imenu-auto-rescan t)
+ '(imenu-auto-rescan t t)
  '(js2-auto-indent-p nil)
  '(js2-bounce-indent-p t)
  '(js2-cleanup-whitespace t)
@@ -92,3 +93,7 @@
 ;; my own instaparse mode
 (require 'instaparse-mode)
 (put 'downcase-region 'disabled nil)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((dot . t))) 
