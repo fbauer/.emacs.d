@@ -1,3 +1,4 @@
+(defconst emacs-start-time (current-time))
 (require 'package)
 (require 'cl)
 (setq package-archives '( ("marmalade" . "http://marmalade-repo.org/packages/")
@@ -96,4 +97,10 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((dot . t))) 
+ '((dot . t)))
+
+(unless noninteractive
+  (message "Loading time for %s: %0.3fs"
+           load-file-name
+           (- (time-to-seconds (current-time))
+              (time-to-seconds emacs-start-time))))
