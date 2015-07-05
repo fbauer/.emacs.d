@@ -1,11 +1,13 @@
 (defconst emacs-start-time (current-time))
 (require 'package)
 (require 'cl)
-(setq package-archives '(("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("gnu" . "http://elpa.gnu.org/packages/")))
+(setq package-archives
+      '(("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+        ("marmalade". "http://marmalade-repo.org/packages/")
+        ("gnu" . "http://elpa.gnu.org/packages/")))
 
 (let ((default-directory "~/.emacs.d/site-lisp/"))
-  (normal-top-level-add-to-load-path '("."))
+  (normal-top-level-add-to-load-path '())
   (normal-top-level-add-subdirs-to-load-path))
 
 (package-initialize)
