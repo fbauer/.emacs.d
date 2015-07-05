@@ -1,14 +1,38 @@
 (defconst emacs-start-time (current-time))
 (setq package-archives
       '(("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-        ("marmalade". "http://marmalade-repo.org/packages/")
+        ("marmalade" . "http://marmalade-repo.org/packages/")
         ("gnu" . "http://elpa.gnu.org/packages/")))
 
 ;; store elisp that is not yet handled by the package system here
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/use-package-20140601/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/bind-key-20140601/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/zenburn-theme-2.1/"))
+
+(setq package-load-list '(
+                          ;; load bind-key, use-package and the
+                          ;; zenburn-theme early
+                          (use-package t)
+                          (bind-key t)
+			  (diminish t)
+                          (zenburn-theme t)
+
+                          ;; FIXME: remove the dependency on starter-kit
+                          ;; This allows to get rid of everything
+                          ;; below, which shafes 100msec from the
+                          ;; startup time as measured by M-x esup
+                          (starter-kit t)
+                          (smex t)
+                          (paredit t)
+                          (magit t)
+                          (find-file-in-project t)
+                          (idle-highlight-mode t)
+                          (ido-ubiquitous t)
+                          ))
+
+
+;; Run package-initialize here to get the non-deferrable dependencies
+;; already loaded.
+
+(package-initialize)
 
 (require 'use-package)
 
@@ -16,7 +40,7 @@
   :defer t)
 
 (use-package starter-kit
-  :defer f)
+  :defer t)
 
 (use-package starter-kit-lisp
   :defer t)
@@ -64,12 +88,10 @@
 (setq x-alt-keysym 'meta)
 (server-start)
 
-;; I have to run package-initialize here. If I don't do it, then
-;; something above disables menu-bar-mode, without respecting
-;; customize.
-;;
-;; FIXME: get rid of package-initialize, as it makes emacs startup slow.
-(package-initialize)
+;; ensure that all other packages are loaded later on by resetting
+;; package-load-list
+
+(setq package-load-list '(all)) 
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
