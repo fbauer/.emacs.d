@@ -9,49 +9,49 @@
 (require 'use-package)
 
 (use-package starter-kit
-             :defer t)
+  :defer t)
 
 (use-package starter-kit-lisp
-             :defer t)
+  :defer t)
 
 (use-package starter-kit-bindings
-             :defer t)
+  :defer t)
 
 (use-package starter-kit-eshell
-             :defer t)
+  :defer t)
 
 (use-package elisp-slime-nav
-             :defer t)
+  :defer t)
 
 (use-package paredit
-             :defer t)
+  :defer t)
 
 (use-package idle-highlight-mode
-             :defer t)
+  :defer t)
 
 (use-package find-file-in-project
-             :defer t)
+  :defer t)
 
 (use-package smex
-             :defer t)
+  :defer t)
 
 (use-package ido-ubiquitous
-             :defer t)
+  :defer t)
 
 (use-package magit
-             :defer t)
+  :defer t)
 
 (use-package clojure-mode
-             :defer t)
+  :defer t)
 
 (use-package clojure-test-mode
-             :defer t)
+  :defer t)
 
 (use-package cider
-             :defer t)
+  :defer t)
 
 (use-package rainbow-delimiters
-             :defer t)
+  :defer t)
 
 (use-package zenburn-theme
   :defer t
@@ -107,7 +107,7 @@
 (put 'downcase-region 'disabled nil)
 
 (use-package org
-  :defer t 
+  :defer t
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
