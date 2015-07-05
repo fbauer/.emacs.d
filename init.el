@@ -92,8 +92,6 @@
 
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
-(load-theme 'zenburn t)
-
 ;; get rid of special rendered fn symbol in clojure mode
 (remove-hook 'clojure-mode-hook 'esk-pretty-fn)
 
