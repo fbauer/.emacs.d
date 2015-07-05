@@ -4,18 +4,25 @@
         ("marmalade". "http://marmalade-repo.org/packages/")
         ("gnu" . "http://elpa.gnu.org/packages/")))
 
-(package-initialize)
+;; store elisp that is not yet handled by the package system here
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/use-package-20140601/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/bind-key-20140601/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elpa/zenburn-theme-2.1/"))
 
 (require 'use-package)
 
-(use-package starter-kit
+(use-package bind-key
   :defer t)
+
+(use-package starter-kit
+  :defer f)
 
 (use-package starter-kit-lisp
   :defer t)
 
 (use-package starter-kit-bindings
-  :defer t)
+  :defer f)
 
 (use-package starter-kit-eshell
   :defer t)
@@ -54,12 +61,19 @@
   :defer t)
 
 (use-package zenburn-theme
-  :defer t
   :init
   (load-theme 'zenburn t))
 
 (setq x-alt-keysym 'meta)
 (server-start)
+
+;; I have to run package-initialize here. If I don't do it, then
+;; something above disables menu-bar-mode, without respecting
+;; customize.
+;;
+;; FIXME: get rid of package-initialize, as it makes emacs startup slow.
+(package-initialize)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -97,9 +111,6 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-;; store elisp that is not yet handled by the package system here
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
-
 ;; my own instaparse mode
 (use-package instaparse-mode
   :mode ( "\\.grammar\\'" .  instaparse-mode))
@@ -118,3 +129,5 @@
            load-file-name
            (- (time-to-seconds (current-time))
               (time-to-seconds emacs-start-time))))
+
+
