@@ -1,6 +1,4 @@
 (defconst emacs-start-time (current-time))
-(require 'package)
-(require 'cl)
 (setq package-archives
       '(("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
         ("marmalade". "http://marmalade-repo.org/packages/")
@@ -12,36 +10,57 @@
 
 (package-initialize)
 
-(defvar my-packages '(starter-kit
-                      starter-kit-lisp
-                      starter-kit-bindings
-                      starter-kit-eshell
-                      elisp-slime-nav
-                      paredit
-                      idle-highlight-mode
-                      find-file-in-project
-                      smex
-                      ido-ubiquitous
-                      magit
-                      clojure-mode
-                      clojure-test-mode
-                      cider
-                      rainbow-delimiters
-                      zenburn-theme))
+(require 'use-package)
 
+(use-package starter-kit
+             :defer t)
 
-(defun my-packages-installed-p ()
-  (loop for p in my-packages
-        when (not (package-installed-p p)) do (return nil)
-        finally (return t)))
+(use-package starter-kit-lisp
+             :defer t)
 
-(unless (my-packages-installed-p)
-  ;; check for new packages (package versions)
-  (package-refresh-contents)
-  ;; install the missing packages
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+(use-package starter-kit-bindings
+             :defer t)
+
+(use-package starter-kit-eshell
+             :defer t)
+
+(use-package elisp-slime-nav
+             :defer t)
+
+(use-package paredit
+             :defer t)
+
+(use-package idle-highlight-mode
+             :defer t)
+
+(use-package find-file-in-project
+             :defer t)
+
+(use-package smex
+             :defer t)
+
+(use-package ido-ubiquitous
+             :defer t)
+
+(use-package magit
+             :defer t)
+
+(use-package clojure-mode
+             :defer t)
+
+(use-package clojure-test-mode
+             :defer t)
+
+(use-package cider
+             :defer t)
+
+(use-package rainbow-delimiters
+             :defer t)
+
+(use-package zenburn-theme
+  :defer t
+  :init
+  (load-theme 'zenburn t))
 
 (setq x-alt-keysym 'meta)
 (server-start)
@@ -88,12 +107,16 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
 
 ;; my own instaparse mode
-(require 'instaparse-mode)
+(use-package instaparse-mode
+  :mode ( "\\.grammar\\'" .  instaparse-mode))
+
 (put 'downcase-region 'disabled nil)
 
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((dot . t)))
+(use-package org-mode
+  :init
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((dot . t))))
 
 (unless noninteractive
   (message "Loading time for %s: %0.3fs"
