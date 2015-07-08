@@ -17,7 +17,10 @@
                           (use-package t)
                           (bind-key t)
                           (diminish t)
-                          (zenburn-theme t)))
+                          (zenburn-theme t)
+			  (smex t)
+			  (ido-ubiquitous t)
+			  (ido-completing-read+ t)))
 
 
 ;; Run package-initialize here to get the non-deferrable dependencies
@@ -47,6 +50,7 @@
   :defer t)
 
 (use-package smex
+  :defer f
   :init
   (progn
     (setq smex-save-file (concat user-emacs-directory ".smex-items"))
@@ -54,6 +58,7 @@
     (global-set-key (kbd "M-x") 'smex)))
 
 (use-package ido-ubiquitous
+  :defer f
   :init
   (progn
     (ido-ubiquitous-mode 1)))

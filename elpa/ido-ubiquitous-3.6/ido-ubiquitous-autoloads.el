@@ -4,8 +4,8 @@
 
 
 ;;;### (autoloads (ido-ubiquitous-debug-mode ido-ubiquitous-mode)
-;;;;;;  "ido-ubiquitous" "ido-ubiquitous.el" (21917 38157 263414
-;;;;;;  459000))
+;;;;;;  "ido-ubiquitous" "ido-ubiquitous.el" (21917 39543 179466
+;;;;;;  218000))
 ;;; Generated autoloads from ido-ubiquitous.el
 
 (define-obsolete-variable-alias 'ido-ubiquitous 'ido-ubiquitous-mode "ido-ubiquitous 0.8")
@@ -46,8 +46,8 @@ Debug info is printed to the *Messages* buffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ido-ubiquitous-pkg.el") (21917 38157
-;;;;;;  275478 550000))
+;;;### (autoloads nil nil ("ido-ubiquitous-pkg.el") (21917 39543
+;;;;;;  191495 879000))
 
 ;;;***
 

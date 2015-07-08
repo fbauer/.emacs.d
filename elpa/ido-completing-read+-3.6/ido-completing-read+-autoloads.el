@@ -4,8 +4,8 @@
 
 
 ;;;### (autoloads (ido-completing-read+ ido-cr+-replace-completely)
-;;;;;;  "ido-completing-read+" "ido-completing-read+.el" (21917 38156
-;;;;;;  291414 423000))
+;;;;;;  "ido-completing-read+" "ido-completing-read+.el" (21917 39540
+;;;;;;  699466 126000))
 ;;; Generated autoloads from ido-completing-read+.el
 
 (defvar ido-cr+-enable-next-call nil "\
@@ -63,7 +63,7 @@ shouldn't matter.")
 ;;;***
 
 ;;;### (autoloads nil nil ("ido-completing-read+-pkg.el") (21917
-;;;;;;  38156 314742 958000))
+;;;;;;  39540 722375 936000))
 
 ;;;***
 
