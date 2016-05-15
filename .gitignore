@@ -4,3 +4,6 @@ places
 elpa/archives
 .smex-items
 url
+/session.*
+/elpa/gnupg
+/#init.el#

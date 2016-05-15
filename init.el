@@ -10,6 +10,7 @@
 
 ;; store elisp that is not yet handled by the package system here
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/beancount"))
 
 (setq package-load-list '(
                           ;; load bind-key, use-package and the
@@ -126,11 +127,13 @@
 
 ;; my own instaparse mode
 (use-package instaparse-mode
+  :load-path "/home/flo/.emacs.d/site-lisp/instaparse-mode"
   :mode ( "\\.grammar\\'" .  instaparse-mode))
 
 ;; beancount mode for beancount ledger files
-(use-package beancount-mode
-  :mode ( "\\.beancount\\'" .  beancount-mode))
+;;; FIXME: integrate into use-package
+(require 'beancount)
+(add-to-list 'auto-mode-alist '("\\.beancount\\'" . beancount-mode))
 
 (put 'downcase-region 'disabled nil)
 
