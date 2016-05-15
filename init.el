@@ -128,6 +128,10 @@
 (use-package instaparse-mode
   :mode ( "\\.grammar\\'" .  instaparse-mode))
 
+;; beancount mode for beancount ledger files
+(use-package beancount-mode
+  :mode ( "\\.beancount\\'" .  beancount-mode))
+
 (put 'downcase-region 'disabled nil)
 
 (use-package org
