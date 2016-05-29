@@ -67,7 +67,9 @@
 (defconst beancount-tag-chars "[:alnum:]-_/.")
 
 (defconst beancount-account-categories
-  '("Assets" "Liabilities" "Equity" "Income" "Expenses"))
+  ;; FIXME: infer these from the option?
+  ;;'("Assets" "Liabilities" "Equity" "Income" "Expenses")
+  '("Aktiva" "Fremdkapital" "Eigenkapital" "Einnahmen" "Ausgaben"))
 
 (defconst beancount-account-chars "[:alnum:]-_:")
 
