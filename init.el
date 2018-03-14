@@ -4,9 +4,10 @@
   (when (fboundp mode) (funcall mode -1)))
 
 (setq package-archives
-      '(("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-        ("marmalade" . "http://marmalade-repo.org/packages/")
-        ("gnu" . "http://elpa.gnu.org/packages/")))
+      '(
+        ("melpa-stable" . "https://stable.melpa.org/packages/")
+        ("marmalade" . "https://marmalade-repo.org/packages/")
+        ("gnu" . "https://elpa.gnu.org/packages/")))
 
 ;; store elisp that is not yet handled by the package system here
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/"))
@@ -20,8 +21,7 @@
                           (diminish t)
                           (zenburn-theme t)
 			  (smex t)
-			  (ido-ubiquitous t)
-			  (ido-completing-read+ t)))
+			  ))
 
 
 ;; Run package-initialize here to get the non-deferrable dependencies
@@ -58,11 +58,19 @@
     (smex-initialize)
     (global-set-key (kbd "M-x") 'smex)))
 
-(use-package ido-ubiquitous
+(use-package ido-completing-read+
   :defer f
   :init
   (progn
-    (ido-ubiquitous-mode 1)))
+    (ido-mode 1)
+    (setq ido-enable-prefix nil
+      ido-enable-flex-matching t
+      ido-auto-merge-work-directories-length nil
+      ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-virtual-buffers t
+      ido-handle-duplicate-virtual-buffers 2
+      ido-max-prospects 10)))
 
 (use-package magit
   :defer t)
@@ -100,13 +108,21 @@
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes (quote (zenburn)))
- '(custom-safe-themes (quote ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "be7eadb2971d1057396c20e2eebaa08ec4bfd1efe9382c12917c6fe24352b7c1" default)))
+ '(custom-safe-themes
+   (quote
+    ("dd4db38519d2ad7eb9e2f30bc03fba61a7af49a185edfd44e020aa5345e3dca7" "be7eadb2971d1057396c20e2eebaa08ec4bfd1efe9382c12917c6fe24352b7c1" default)))
  '(imenu-auto-rescan t t)
  '(menu-bar-mode t)
  '(org-agenda-files (quote ("~/orgmode/logins.org.gpg")))
  '(org-default-notes-file (concat org-directory "/notes"))
  '(org-directory "~/orgmode")
- '(python-remove-cwd-from-path nil))
+ '(python-remove-cwd-from-path nil)
+ '(safe-local-variable-values
+   (quote
+    ((pytest-cmd-flags . "")
+     (pytest-global-name . ".env/bin/pytest")
+     (whitespace-line-column . 80)
+     (lexical-binding . t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -144,6 +160,18 @@
    'org-babel-load-languages
    '((dot . t))))
 
+(use-package python
+  :config
+  (use-package pytest
+   :ensure t
+   :bind (:map python-mode-map
+               ("C-c t a" . pytest-all)
+               ("C-c t m" . pytest-module)
+               ("C-c t ." . pytest-one)
+               ("C-c t d" . pytest-directory)
+               ("C-c t p a" . pytest-pdb-all)
+               ("C-c t p m" . pytest-pdb-module)
+               ("C-c t p ." . pytest-pdb-one))))
 
 ;;
 ;; Key bindings copy-pasted from starter-kit bindings 2.0.3
@@ -420,17 +448,8 @@
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
-;; ido-mode is like magic pixie dust!
-(ido-mode t)
 
-(setq ido-enable-prefix nil
-      ido-enable-flex-matching t
-      ido-auto-merge-work-directories-length nil
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-use-virtual-buffers t
-      ido-handle-duplicate-virtual-buffers 2
-      ido-max-prospects 10)
+
 
 (set-default 'indent-tabs-mode nil)
 (set-default 'indicate-empty-lines t)

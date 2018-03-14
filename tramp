@@ -1,0 +1,64 @@
+;; -*- emacs-lisp -*- <16/01/23 21:40:44 /home/flo/.emacs.d/tramp>
+;; Tramp connection history.  Don't change this file.
+;; You can delete it, forcing Tramp to reapply the checks.
+
+((["ssh" "pi" "192.168.178.50" nil nil]
+  ("locale" "LC_ALL=C")
+  ("uname" "Linux 4.1.13+")
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+  ("remote-shell" "/bin/sh")
+  ("stat" "\\stat")
+  ("file-exists" "test -e")
+  ("id" "/usr/bin/id")
+  ("gid-string" "pi")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("readlink" "\\readlink")
+  ("gid-integer" 1000)
+  ("git" nil)
+  ("~" "/home/pi")
+  ("ls" "/bin/ls --color=never")
+  ("uid-integer" 1000)
+  ("ls-dired" t))
+ (["sudo" "root" "192.168.178.50" nil "ssh:pi@192.168.178.50|"]
+  ("locale" "LC_ALL=C")
+  ("uname" "Linux 4.1.13+")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+  ("remote-shell" "/bin/sh")
+  ("test" "test")
+  ("stat" "\\stat")
+  ("file-exists" "test -e")
+  ("id" "/usr/bin/id")
+  ("gid-string" "root")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("readlink" "\\readlink")
+  ("gid-integer" 0)
+  ("git" nil)
+  ("uid-integer" 0))
+ (["sudo" "root" "192.168.178.50" nil nil]
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+  ("stat" "\\stat")
+  ("file-exists" "test -e")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 0)
+  ("ls" "/bin/ls --color=never")
+  ("git" nil)
+  ("gid-string" "root")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("~root" "/root")
+  ("readlink" "\\readlink")
+  ("uid-integer" 0))
+ (["scp" nil "ssh" nil nil]
+  nil)
+ (["ssh" nil "192.168.178.50" nil nil]
+  nil))

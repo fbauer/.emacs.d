@@ -1,0 +1,5 @@
+cp ~/Downloads/umsaetze_1181272624_20160529-0901.csv .
+cd ..
+cd comdirect/
+open
+rm umsaetze_1181272624_20160529-0901.csv.extract 
